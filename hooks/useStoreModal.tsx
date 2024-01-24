@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-import { useStoreModalInterface } from "@/types";
+import { useStoreModalInterface } from "@/interfaces";
 
 export const useStoreModal = create<useStoreModalInterface>((set) => ({
   isOpen: false,

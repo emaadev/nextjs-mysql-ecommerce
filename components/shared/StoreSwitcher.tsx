@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Check, ChevronsUpDown, PlusCircle, StoreIcon } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
-import { Store } from "@prisma/client";
 
 import {
   Popover,
@@ -11,7 +10,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { useStoreModal } from "@/hooks/useStoreModal";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -20,15 +19,9 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "../ui/command";
+} from "@/components/ui/command";
 
-type PopoverTriggerProps = React.ComponentPropsWithoutRef<
-  typeof PopoverTrigger
->;
-
-interface StoreSwitcherProps extends PopoverTriggerProps {
-  items: Store[];
-}
+import { StoreSwitcherProps } from "@/interfaces";
 
 const StoreSwitcher = ({ className, items = [] }: StoreSwitcherProps) => {
   const params = useParams();
@@ -79,7 +72,7 @@ const StoreSwitcher = ({ className, items = [] }: StoreSwitcherProps) => {
                 <CommandItem
                   key={item.value}
                   onSelect={() => onStoreSelect(item)}
-                  className="text-sm"
+                  className="text-sm cursor-pointer"
                 >
                   <StoreIcon className="mr-2 h-4 w-4" />
                   {item.label}
@@ -105,6 +98,7 @@ const StoreSwitcher = ({ className, items = [] }: StoreSwitcherProps) => {
                   setOpen(false);
                   storeModal.onOpen();
                 }}
+                className="cursor-pointer"
               >
                 <PlusCircle className="mr-2 h-5 w-5" />
                 Create Store

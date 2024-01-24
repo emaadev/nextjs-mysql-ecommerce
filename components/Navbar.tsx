@@ -1,8 +1,9 @@
-import { UserButton, auth } from "@clerk/nextjs";
-import StoreSwitcher from "./shared/StoreSwitcher";
-import MainNav from "./shared/MainNav";
 import { redirect } from "next/navigation";
 import prismadb from "@/lib/prismdb";
+import { UserButton, auth } from "@clerk/nextjs";
+
+import StoreSwitcher from "@/components/shared/StoreSwitcher";
+import MainNav from "@/components/shared/MainNav";
 
 const Navbar = async () => {
   const { userId } = auth();
@@ -18,7 +19,7 @@ const Navbar = async () => {
   });
 
   return (
-    <div className="border-b">
+    <main className="border-b">
       <div className="flex h-16 items-center justify-center px-4">
         <StoreSwitcher items={stores} />
 
@@ -28,7 +29,7 @@ const Navbar = async () => {
           <UserButton afterSignOutUrl="/" />
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

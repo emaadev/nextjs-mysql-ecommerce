@@ -9,9 +9,9 @@ const MainNav = () => {
 
   const routes = [
     {
-      href: `/settings/${params.storeId}`,
+      href: `/${params.storeId}/settings`,
       label: "Settings",
-      active: pathname === `/settings/${params.storeId}`,
+      active: pathname === `/${params.storeId}/settings`,
     },
   ];
 

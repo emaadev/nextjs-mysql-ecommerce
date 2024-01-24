@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { ModalProps } from "@/types";
+import { ModalProps } from "@/interfaces";
 
 const Modal = ({
   title,

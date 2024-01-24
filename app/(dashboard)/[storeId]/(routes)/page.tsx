@@ -1,8 +1,6 @@
 import prismadb from "@/lib/prismdb";
 
-interface DashboardPage {
-  params: { storeId: string };
-}
+import { DashboardPage } from "@/interfaces";
 
 const DashboardPage = async ({ params }: DashboardPage) => {
   const store = await prismadb.store.findFirst({
