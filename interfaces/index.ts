@@ -61,3 +61,10 @@ export interface CommandDialogProps extends DialogProps {}
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}
+
+export interface AlertModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onConfirm: () => void;
+  loading: boolean;
+}
