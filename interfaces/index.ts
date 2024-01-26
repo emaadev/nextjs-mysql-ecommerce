@@ -2,11 +2,12 @@ import * as z from "zod";
 import { VariantProps } from "class-variance-authority";
 import { type DialogProps } from "@radix-ui/react-dialog";
 
-import { Store } from "@prisma/client";
+import { Store, Billboard } from "@prisma/client";
 
-import { formSchema } from "@/components/Settings";
+import { settingsFormSchema } from "@/components/Settings";
 import { PopoverTrigger } from "@/components/ui/popover";
 import { buttonVariants } from "@/components/ui/button";
+import { billboardFormSchema } from "@/components/Billboard";
 
 export interface DashboardPage {
   params: { storeId: string };
@@ -36,7 +37,13 @@ export interface SettingsProps {
   initialData: Store;
 }
 
-export type SettingsFormValues = z.infer<typeof formSchema>;
+export interface BillboardProps {
+  initialData: Billboard | null;
+}
+
+export type SettingsFormValues = z.infer<typeof settingsFormSchema>;
+
+export type BillboardFormValues = z.infer<typeof billboardFormSchema>;
 
 export interface HeadingProps {
   title: string;
@@ -67,4 +74,11 @@ export interface AlertModalProps {
   onClose: () => void;
   onConfirm: () => void;
   loading: boolean;
+}
+
+export interface ImageUploadProps {
+  disabled?: boolean;
+  onChange: (value: string) => void;
+  onRemove: (value: string) => void;
+  value: string[];
 }
