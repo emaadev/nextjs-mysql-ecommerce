@@ -10,6 +10,8 @@ import { useParams, useRouter } from "next/navigation";
 import { Trash } from "lucide-react";
 import toast from "react-hot-toast";
 
+import useOrigin from "@/hooks/useOrigin";
+
 import Heading from "@/components/shared/Heading";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -34,6 +36,8 @@ export const formSchema = z.object({
 const Settings = ({ initialData }: SettingsProps) => {
   const params = useParams();
   const router = useRouter();
+
+  const origin = useOrigin();
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
