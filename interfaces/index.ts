@@ -8,6 +8,7 @@ import { settingsFormSchema } from "@/components/Settings";
 import { PopoverTrigger } from "@/components/ui/popover";
 import { buttonVariants } from "@/components/ui/button";
 import { billboardFormSchema } from "@/components/Billboard";
+import { BillboardColumn } from "@/app/(dashboard)/[storeId]/(routes)/billboards/components/columns";
 
 export interface DashboardPage {
   params: { storeId: string };
@@ -39,6 +40,10 @@ export interface SettingsProps {
 
 export interface BillboardProps {
   initialData: Billboard | null;
+}
+
+export interface BillboardClientProps {
+  data: BillboardColumn[];
 }
 
 export type SettingsFormValues = z.infer<typeof settingsFormSchema>;

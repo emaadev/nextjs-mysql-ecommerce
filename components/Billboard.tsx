@@ -10,8 +10,6 @@ import { useParams, useRouter } from "next/navigation";
 import { Trash } from "lucide-react";
 import toast from "react-hot-toast";
 
-import useOrigin from "@/hooks/useOrigin";
-
 import Heading from "@/components/shared/Heading";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -25,7 +23,6 @@ import {
 } from "@/components/ui/form";
 import AlertModal from "@/components/modals/AlertModal";
 import { Input } from "@/components/ui/input";
-import ApiAlert from "@/components/shared/ApiAlert";
 
 import { BillboardFormValues, BillboardProps } from "@/interfaces";
 import ImageUpload from "./shared/ImageUpload";
@@ -38,8 +35,6 @@ export const billboardFormSchema = z.object({
 const Billboard = ({ initialData }: BillboardProps) => {
   const params = useParams();
   const router = useRouter();
-
-  const origin = useOrigin();
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
