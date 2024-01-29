@@ -2,13 +2,15 @@ import * as z from "zod";
 import { VariantProps } from "class-variance-authority";
 import { type DialogProps } from "@radix-ui/react-dialog";
 
-import { Store, Billboard } from "@prisma/client";
+import { Store, Billboard, Category } from "@prisma/client";
 
 import { settingsFormSchema } from "@/components/Settings";
 import { PopoverTrigger } from "@/components/ui/popover";
 import { buttonVariants } from "@/components/ui/button";
 import { billboardFormSchema } from "@/components/Billboard";
 import { BillboardColumn } from "@/app/(dashboard)/[storeId]/(routes)/billboards/components/columns";
+import { CategoryColumn } from "@/app/(dashboard)/[storeId]/(routes)/categories/components/columns";
+import { categoryFormSchema } from "@/components/Category";
 
 export interface DashboardPage {
   params: { storeId: string };
@@ -42,13 +44,24 @@ export interface BillboardProps {
   initialData: Billboard | null;
 }
 
+export interface CategoryProps {
+  initialData: Category | null;
+  billboards: Billboard[];
+}
+
 export interface BillboardClientProps {
   data: BillboardColumn[];
+}
+
+export interface CategoryClientProps {
+  data: CategoryColumn[];
 }
 
 export type SettingsFormValues = z.infer<typeof settingsFormSchema>;
 
 export type BillboardFormValues = z.infer<typeof billboardFormSchema>;
+
+export type CategoryFormValues = z.infer<typeof categoryFormSchema>;
 
 export interface HeadingProps {
   title: string;
