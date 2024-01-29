@@ -79,7 +79,7 @@ const Billboard = ({ initialData }: BillboardProps) => {
       );
       router.refresh();
       router.push("/");
-      toast.success("Store deleted.");
+      toast.success("Billboard deleted.");
     } catch (error) {
       toast.error(
         "Make sure you removed all the categories using this billboard first."

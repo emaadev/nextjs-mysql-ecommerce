@@ -10,6 +10,7 @@ import { DataTable } from "@/components/shared/DataTable";
 
 import { BillboardClientProps } from "@/interfaces";
 import { columns } from "./columns";
+import ApiList from "@/components/shared/ApiList";
 
 const BillboardClient = ({ data }: BillboardClientProps) => {
   const router = useRouter();
@@ -36,6 +37,11 @@ const BillboardClient = ({ data }: BillboardClientProps) => {
 
       {/* TODO: Create a button to select the searchKey */}
       <DataTable searchKey="label" columns={columns} data={data} />
+
+      <Heading title="API" description="API calls for Billboards" />
+      <Separator className="mt-4 mb-8" />
+
+      <ApiList entityName="billboards" entityIdName="billboardId" />
     </main>
   );
 };
