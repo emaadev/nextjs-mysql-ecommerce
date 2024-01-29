@@ -24,44 +24,46 @@ import {
 import AlertModal from "@/components/modals/AlertModal";
 import { Input } from "@/components/ui/input";
 
-import { SizeFormValues, SizeProps } from "@/interfaces";
+import { ColorFormValues, ColorProps } from "@/interfaces";
 
-export const sizeFormSchema = z.object({
+export const colorFormSchema = z.object({
   name: z.string().min(1),
-  value: z.string().min(1),
+  value: z.string().min(4).regex(/^#/, {
+    message: "String must be a valid hex code",
+  }),
 });
 
-const Size = ({ initialData }: SizeProps) => {
+const Color = ({ initialData }: ColorProps) => {
   const params = useParams();
   const router = useRouter();
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit size" : "Create size";
-  const description = initialData ? "Edit a size" : "Add a new size";
-  const toastMessage = initialData ? "Size update." : "Size created.";
-  const action = initialData ? "Save changes" : "Create size";
+  const title = initialData ? "Edit color" : "Create color";
+  const description = initialData ? "Edit a color" : "Add a new color";
+  const toastMessage = initialData ? "Color update." : "color created.";
+  const action = initialData ? "Save changes" : "Create color";
 
-  const form = useForm<SizeFormValues>({
-    resolver: zodResolver(sizeFormSchema),
+  const form = useForm<ColorFormValues>({
+    resolver: zodResolver(colorFormSchema),
     defaultValues: initialData || { name: "", value: "" },
   });
 
-  const onSubmit = async (data: SizeFormValues) => {
+  const onSubmit = async (data: ColorFormValues) => {
     try {
       setLoading(true);
       if (initialData) {
         await axios.patch(
-          `/api/${params.storeId}/sizes/${params.sizeId}`,
+          `/api/${params.storeId}/colors/${params.colorId}`,
           data
         );
       } else {
-        await axios.post(`/api/${params.storeId}/sizes`, data);
+        await axios.post(`/api/${params.storeId}/colors`, data);
       }
 
       router.refresh();
-      router.push(`/${params.storeId}/sizes`);
+      router.push(`/${params.storeId}/colors`);
       toast.success(toastMessage);
     } catch (error) {
       toast.error("Something went wrong.");
@@ -73,12 +75,12 @@ const Size = ({ initialData }: SizeProps) => {
   const onDelete = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/api/${params.storeId}/sizes/${params.sizeId}`);
+      await axios.delete(`/api/${params.storeId}/colors/${params.colorId}`);
       router.refresh();
       router.push("/");
-      toast.success("Size deleted.");
+      toast.success("Color deleted.");
     } catch (error) {
-      toast.error("Make sure you removed all products using this size.");
+      toast.error("Make sure you removed all products using this color first.");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -127,7 +129,7 @@ const Size = ({ initialData }: SizeProps) => {
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Size label"
+                      placeholder="Color name"
                       {...field}
                     />
                   </FormControl>
@@ -145,11 +147,18 @@ const Size = ({ initialData }: SizeProps) => {
                   <FormLabel>Value</FormLabel>
 
                   <FormControl>
-                    <Input
-                      disabled={loading}
-                      placeholder="Size value"
-                      {...field}
-                    />
+                    <div className="flex items-center gap-x-4">
+                      <Input
+                        disabled={loading}
+                        placeholder="Color value"
+                        {...field}
+                      />
+
+                      <div
+                        className="border p-4 rounded-full"
+                        style={{ backgroundColor: field.value }}
+                      />
+                    </div>
                   </FormControl>
 
                   <FormMessage />
@@ -169,4 +178,4 @@ const Size = ({ initialData }: SizeProps) => {
   );
 };
 
-export default Size;
+export default Color;

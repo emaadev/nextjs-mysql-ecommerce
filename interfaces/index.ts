@@ -2,7 +2,7 @@ import * as z from "zod";
 import { VariantProps } from "class-variance-authority";
 import { type DialogProps } from "@radix-ui/react-dialog";
 
-import { Store, Billboard, Category, Size } from "@prisma/client";
+import { Store, Billboard, Category, Size, Color } from "@prisma/client";
 
 import { settingsFormSchema } from "@/components/Settings";
 import { PopoverTrigger } from "@/components/ui/popover";
@@ -13,6 +13,8 @@ import { CategoryColumn } from "@/app/(dashboard)/[storeId]/(routes)/categories/
 import { categoryFormSchema } from "@/components/Category";
 import { SizeColumn } from "@/app/(dashboard)/[storeId]/(routes)/sizes/components/columns";
 import { sizeFormSchema } from "@/components/Size";
+import { ColorColumn } from "@/app/(dashboard)/[storeId]/(routes)/colors/components/columns";
+import { colorFormSchema } from "@/components/Color";
 
 export interface DashboardPage {
   params: { storeId: string };
@@ -50,6 +52,10 @@ export interface SizeProps {
   initialData: Size | null;
 }
 
+export interface ColorProps {
+  initialData: Color | null;
+}
+
 export interface CategoryProps {
   initialData: Category | null;
   billboards: Billboard[];
@@ -63,6 +69,10 @@ export interface SizesClientProps {
   data: SizeColumn[];
 }
 
+export interface ColorClientProps {
+  data: ColorColumn[];
+}
+
 export interface CategoryClientProps {
   data: CategoryColumn[];
 }
@@ -74,6 +84,8 @@ export type BillboardFormValues = z.infer<typeof billboardFormSchema>;
 export type CategoryFormValues = z.infer<typeof categoryFormSchema>;
 
 export type SizeFormValues = z.infer<typeof sizeFormSchema>;
+
+export type ColorFormValues = z.infer<typeof colorFormSchema>;
 
 export interface HeadingProps {
   title: string;
