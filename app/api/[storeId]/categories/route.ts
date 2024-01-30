@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs";
 
 import prismadb from "@/lib/prismadb";
-import { json } from "stream/consumers";
 
 // <-- POST route -->
 export async function POST(
@@ -64,7 +63,7 @@ export async function GET(
 
     const categories = await prismadb.category.findMany({
       where: {
-        id: params.storeId,
+        storeId: params.storeId,
       },
     });
 
