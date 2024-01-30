@@ -77,7 +77,7 @@ const Color = ({ initialData }: ColorProps) => {
       setLoading(true);
       await axios.delete(`/api/${params.storeId}/colors/${params.colorId}`);
       router.refresh();
-      router.push("/");
+      router.push(`/${params.storeId}/colors`);
       toast.success("Color deleted.");
     } catch (error) {
       toast.error("Make sure you removed all products using this color first.");
