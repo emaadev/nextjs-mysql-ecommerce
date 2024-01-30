@@ -25,6 +25,7 @@ import { ColorColumn } from "@/app/(dashboard)/[storeId]/(routes)/colors/compone
 import { colorFormSchema } from "@/components/Color";
 import { ProductColumn } from "@/app/(dashboard)/[storeId]/(routes)/products/components/columns";
 import { productFormSchema } from "@/components/Product";
+import { OrderColumn } from "@/app/(dashboard)/[storeId]/(routes)/orders/components/columns";
 
 export interface DashboardPage {
   params: { storeId: string };
@@ -84,6 +85,10 @@ export interface CategoryProps {
 
 export interface BillboardClientProps {
   data: BillboardColumn[];
+}
+
+export interface OrderClientProps {
+  data: OrderColumn[];
 }
 
 export interface ProductClientProps {
