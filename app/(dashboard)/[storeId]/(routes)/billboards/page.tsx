@@ -1,7 +1,6 @@
-import prismadb from "@/lib/prismdb";
+import prismadb from "@/lib/prismadb";
 
 import { format } from "date-fns";
-
 
 import { BillboardColumn } from "./components/columns";
 import BillboardClient from "./components/BillboardClient";

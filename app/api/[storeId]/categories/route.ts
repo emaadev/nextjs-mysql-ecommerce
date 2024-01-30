@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs";
 
-import prismadb from "@/lib/prismdb";
+import prismadb from "@/lib/prismadb";
 import { json } from "stream/consumers";
 
 // <-- POST route -->

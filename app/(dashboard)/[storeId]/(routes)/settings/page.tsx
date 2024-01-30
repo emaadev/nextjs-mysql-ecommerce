@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 
 import Settings from "@/components/Settings";
-import prismadb from "@/lib/prismdb";
+import prismadb from "@/lib/prismadb";
 import { auth } from "@clerk/nextjs";
 
 import { SettingsPageProps } from "@/interfaces";

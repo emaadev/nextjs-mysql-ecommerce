@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
-import prismadb from "@/lib/prismdb";
+import prismadb from "@/lib/prismadb";
 
 const SetupLayout = async ({ children }: { children: React.ReactNode }) => {
   const { userId } = auth();

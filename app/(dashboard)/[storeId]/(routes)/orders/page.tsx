@@ -1,4 +1,4 @@
-import prismadb from "@/lib/prismdb";
+import prismadb from "@/lib/prismadb";
 
 import { format } from "date-fns";
 
