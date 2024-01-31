@@ -90,8 +90,8 @@ const Product = ({ initialData, categories, sizes, colors }: ProductProps) => {
         await axios.post(`/api/${params.storeId}/products`, data);
       }
 
-      router.refresh();
       router.push(`/${params.storeId}/products`);
+      router.refresh();
       toast.success(toastMessage);
     } catch (error) {
       toast.error("Something went wrong.");

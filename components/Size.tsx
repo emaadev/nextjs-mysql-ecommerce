@@ -60,8 +60,8 @@ const Size = ({ initialData }: SizeProps) => {
         await axios.post(`/api/${params.storeId}/sizes`, data);
       }
 
-      router.refresh();
       router.push(`/${params.storeId}/sizes`);
+      router.refresh();
       toast.success(toastMessage);
     } catch (error) {
       toast.error("Something went wrong.");
