@@ -25,7 +25,7 @@ import AlertModal from "@/components/modals/AlertModal";
 import { Input } from "@/components/ui/input";
 
 import { BillboardFormValues, BillboardProps } from "@/interfaces";
-import ImageUpload from "./shared/ImageUpload";
+import ImageUpload from "@/components/shared/ImageUpload";
 
 export const billboardFormSchema = z.object({
   label: z.string().min(1),

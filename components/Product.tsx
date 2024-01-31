@@ -30,11 +30,11 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "./ui/select";
+} from "@/components/ui/select";
 
 import { ProductFormValues, ProductProps } from "@/interfaces";
-import ImageUpload from "./shared/ImageUpload";
-import { Checkbox } from "./ui/checkbox";
+import ImageUpload from "@/components/shared/ImageUpload";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export const productFormSchema = z.object({
   name: z.string().min(1),
