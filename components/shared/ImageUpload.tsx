@@ -48,7 +48,12 @@ const ImageUpload = ({
               </Button>
             </div>
 
-            <Image fill className="object-cover" alt="Image Upload" src={url} />
+            <Image
+              fill
+              className="w-full object-contain"
+              alt="Image Upload"
+              src={url}
+            />
           </div>
         ))}
       </section>
