@@ -4,6 +4,7 @@ import { UserButton, auth } from "@clerk/nextjs";
 
 import StoreSwitcher from "@/components/shared/StoreSwitcher";
 import MainNav from "@/components/shared/MainNav";
+import { ThemeToggle } from "@/components/shared/ThemeToggle";
 
 const Navbar = async () => {
   const { userId } = auth();
@@ -26,6 +27,7 @@ const Navbar = async () => {
         <MainNav />
 
         <div className="ml-auto flex items-center space-x-4">
+          <ThemeToggle />
           <UserButton afterSignOutUrl="/" />
         </div>
       </div>
